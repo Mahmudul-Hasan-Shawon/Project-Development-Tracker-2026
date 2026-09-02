@@ -774,6 +774,18 @@ select.filter:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px
   outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-dim);
 }
 .field input[readonly]{color:var(--text-faint);background:var(--ink-800);cursor:not-allowed}
+.field.has-toggle input{padding-right:38px}
+.input-wrap{position:relative;display:block}
+.pw-toggle{
+  position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
+  background:none;border:none;border-radius:7px;color:var(--text-faint);cursor:pointer;
+  transition:all .2s cubic-bezier(.22,1,.36,1);
+}
+.pw-toggle:hover{color:var(--text);background:var(--ink-750)}
+.pw-toggle:active{transform:translateY(-50%) scale(.9)}
+.pw-toggle svg{width:16px;height:16px;pointer-events:none}
+.pw-toggle.showing{color:var(--accent)}
 .field-hint{font-size:11px;color:var(--text-faint);margin-top:4px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 .form-grid .full{grid-column:1/-1}
@@ -792,7 +804,7 @@ select.filter:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px
   animation:fadeIn .25s ease both;
 }
 .modal-panel{
-  position:relative;width:min(760px,100%);max-height:88vh;display:flex;flex-direction:column;
+  position:relative;width:min(460px,100%);max-height:88vh;display:flex;flex-direction:column;
   background:var(--ink-800);border:1px solid var(--line);border-radius:18px;
   box-shadow:var(--shadow-lg),0 0 40px rgba(201,242,77,.04);
   animation:riseScale .32s cubic-bezier(.22,1,.36,1) both;

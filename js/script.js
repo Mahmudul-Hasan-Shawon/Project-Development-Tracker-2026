@@ -1187,6 +1187,17 @@ function wireChrome() {
   $('#modalSave').addEventListener('click', onModalSave);
 
   document.addEventListener('click', (ev) => {
+    const pwToggle = ev.target.closest('.pw-toggle');
+    if (pwToggle) {
+      const input = document.getElementById(pwToggle.dataset.target);
+      if (input) {
+        const show = input.type === 'password';
+        input.type = show ? 'text' : 'password';
+        pwToggle.classList.toggle('showing', show);
+        pwToggle.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+      }
+      return;
+    }
     if (ev.target.dataset && ev.target.dataset.close) {
       ev.target.closest('.modal').classList.add('hidden');
     }
@@ -1342,13 +1353,28 @@ function openPasswordForm() {
     title: 'Change password',
     saveLabel: 'Update password',
     body: `<div class="form-grid">
-      <label class="field full"><span class="field-label">Current password</span>
-        <input type="password" data-field="current" autocomplete="current-password"></label>
-      <label class="field full"><span class="field-label">New password</span>
-        <input type="password" data-field="next" autocomplete="new-password">
+      <label class="field full has-toggle"><span class="field-label">Current password</span>
+        <span class="input-wrap">
+          <input type="password" data-field="current" id="pwCurrent" autocomplete="current-password">
+          <button type="button" class="pw-toggle" data-target="pwCurrent" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </span></label>
+      <label class="field full has-toggle"><span class="field-label">New password</span>
+        <span class="input-wrap">
+          <input type="password" data-field="next" id="pwNext" autocomplete="new-password">
+          <button type="button" class="pw-toggle" data-target="pwNext" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </span>
         <span class="field-hint">At least 10 characters. Your other sessions will be signed out.</span></label>
-      <label class="field full"><span class="field-label">Confirm new password</span>
-        <input type="password" data-field="confirm" autocomplete="new-password"></label>
+      <label class="field full has-toggle"><span class="field-label">Confirm new password</span>
+        <span class="input-wrap">
+          <input type="password" data-field="confirm" id="pwConfirm" autocomplete="new-password">
+          <button type="button" class="pw-toggle" data-target="pwConfirm" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </span></label>
     </div>`
   });
 }
