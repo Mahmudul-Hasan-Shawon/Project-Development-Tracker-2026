@@ -624,6 +624,35 @@ select.filter:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px
 .stat-val{font-family:var(--mono);font-size:19px;font-weight:600}
 .stat-lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-top:4px}
 
+/* stat color variants */
+.stat-green{background:rgba(111,191,139,.08);border-color:rgba(111,191,139,.22)}
+.stat-green .stat-val{color:var(--green)}
+.stat-green:hover{border-color:rgba(111,191,139,.4);box-shadow:0 0 16px rgba(111,191,139,.06)}
+
+.stat-red{background:rgba(224,101,94,.08);border-color:rgba(224,101,94,.22)}
+.stat-red .stat-val{color:var(--red)}
+.stat-red:hover{border-color:rgba(224,101,94,.4);box-shadow:0 0 16px rgba(224,101,94,.06)}
+
+.stat-accent{background:var(--accent-dim);border-color:var(--accent-line)}
+.stat-accent .stat-val{color:var(--accent)}
+.stat-accent:hover{border-color:var(--accent);box-shadow:0 0 16px rgba(201,242,77,.08)}
+
+.stat-accent2{background:var(--accent-2-dim);border-color:rgba(255,122,69,.22)}
+.stat-accent2 .stat-val{color:var(--accent-2)}
+.stat-accent2:hover{border-color:rgba(255,122,69,.4);box-shadow:0 0 16px rgba(255,122,69,.06)}
+
+.stat-teal{background:rgba(78,201,176,.08);border-color:rgba(78,201,176,.22)}
+.stat-teal .stat-val{color:var(--teal)}
+.stat-teal:hover{border-color:rgba(78,201,176,.4);box-shadow:0 0 16px rgba(78,201,176,.06)}
+
+.stat-violet{background:rgba(167,139,208,.08);border-color:rgba(167,139,208,.22)}
+.stat-violet .stat-val{color:var(--violet)}
+.stat-violet:hover{border-color:rgba(167,139,208,.4);box-shadow:0 0 16px rgba(167,139,208,.06)}
+
+.stat-yellow{background:rgba(227,197,103,.08);border-color:rgba(227,197,103,.22)}
+.stat-yellow .stat-val{color:var(--yellow)}
+.stat-yellow:hover{border-color:rgba(227,197,103,.4);box-shadow:0 0 16px rgba(227,197,103,.06)}
+
 .tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:16px;overflow-x:auto}
 .tab{
   padding:9px 14px;font-size:12.5px;font-weight:500;color:var(--text-dim);
