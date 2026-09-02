@@ -1184,11 +1184,12 @@ function wireChrome() {
     }
     const anchor = ev.target.closest('a[href]');
     if (anchor) {
-      const url = anchor.href;
-      const isExternal = /^https?:\/\//.test(url) || /^www\./.test(url);
+      const url = anchor.getAttribute('href') || '';
+      const isHashRoute = url.startsWith('#');
+      const isExternal = !isHashRoute && (/^https?:\/\//.test(url) || /^www\./.test(url));
       if (isExternal) {
         ev.preventDefault();
-        window.open(url, '_blank', 'noopener,noreferrer');
+        window.open(anchor.href, '_blank', 'noopener,noreferrer');
       }
     }
   });
@@ -1238,6 +1239,21 @@ function wireChrome() {
 
   hamburgerBtn.addEventListener('click', openSidebar);
   sidebarOverlay.addEventListener('click', closeSidebar);
+
+  // hide the mobile bottom bar on scroll down, show on scroll up
+  const topbarEl = document.querySelector('.topbar');
+  let lastScrollY = window.scrollY;
+  const isMobile = () => window.matchMedia('(max-width:640px)').matches;
+  window.addEventListener('scroll', () => {
+    if (!isMobile()) return;
+    const y = window.scrollY;
+    if (y > lastScrollY && y > 60 && !sidebar.classList.contains('show')) {
+      topbarEl.classList.add('nav-hide');
+    } else if (y < lastScrollY || y <= 60) {
+      topbarEl.classList.remove('nav-hide');
+    }
+    lastScrollY = y;
+  }, { passive: true });
 
   $('#themeBtnMobile').addEventListener('click', () => {
     toggleTheme();

@@ -322,10 +322,12 @@ button{font-family:inherit}
 
 .nav{display:flex;gap:2px;margin-right:auto}
 .nav a{
+  display:inline-flex;align-items:center;gap:6px;
   padding:6px 12px;border-radius:8px;font-size:13px;font-weight:500;
   color:var(--text-dim);transition:all .2s cubic-bezier(.22,1,.36,1);
   position:relative;
 }
+.nav a .ico{width:15px;height:15px}
 .nav a:hover{background:var(--ink-750);color:var(--text)}
 .nav a:active{transform:none;transition-duration:.08s}
 .nav a.active{background:var(--accent-dim);color:var(--accent)}
@@ -791,10 +793,11 @@ html{-webkit-tap-highlight-color:transparent}
   box-shadow:-12px 0 32px rgba(0,0,0,.35);
 }
 .sidebar.show{transform:translateX(0)}
-.sidebar-head{display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid var(--line)}
+.sidebar-head{display:flex;align-items:center;justify-content:flex-end;padding:12px 12px 4px}
 .sidebar-title{font-weight:600;font-size:14px}
-.sidebar-close{margin-left:auto}
-.sidebar-body{display:flex;flex-direction:column;padding:10px 12px;gap:2px;flex:1;overflow-y:auto}
+.sidebar-close{font-size:24px;color:var(--text-faint)}
+.sidebar-close:hover{color:var(--text);background:var(--ink-750)}
+.sidebar-body{display:flex;flex-direction:column;padding:6px 12px;gap:2px;flex:1;overflow-y:auto}
 .sidebar-sep{height:1px;background:var(--line-soft);margin:8px 4px}
 .sidebar-nav{
   display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:8px;
@@ -813,7 +816,11 @@ html{-webkit-tap-highlight-color:transparent}
 .sidebar-foot{
   padding:12px;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:8px;
 }
-.sidebar-user{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-faint);padding:4px 8px;border-bottom:1px solid var(--line-soft)}
+.sidebar-user{
+  display:flex;align-items:center;gap:10px;padding:12px 12px;
+  font-size:12px;color:var(--text-faint);border-bottom:1px solid var(--line-soft);
+}
+.sidebar-user .avatar{width:30px;height:30px;flex:none}
 
 /* ---- tablets: slim the topbar by dropping the name/role text ---- */
 @media(max-width:900px){
@@ -821,15 +828,30 @@ html{-webkit-tap-highlight-color:transparent}
   .main{padding:22px 16px 34px}
 }
 
-/* ---- phones ---- */
+/* ---- phones: convert topbar into a bottom tab bar that hides on scroll ---- */
 @media(max-width:640px){
-  .topbar{gap:10px;padding:0 10px}
+  .topbar{
+    position:fixed;left:0;right:0;bottom:0;top:auto;z-index:40;
+    gap:8px;padding:6px 10px;height:auto;min-height:56px;
+    border-bottom:none;border-top:1px solid var(--line);
+    transform:translateY(0);
+    transition:transform .35s cubic-bezier(.22,1,.36,1);
+  }
+  .topbar.nav-hide{transform:translateY(110%)}
   .brand{margin-right:0}
   .brand-text{display:none}
-  .nav{display:none}
-  .topbar-right{gap:2px;margin-left:auto}
-  .topbar-right .icon-btn{width:30px;height:30px}
-  .hamburger{display:flex}
+  .nav{display:flex;margin:0 auto;gap:4px}
+  .nav a{
+    display:flex;flex-direction:column;align-items:center;gap:3px;
+    padding:5px 14px;font-size:10px;color:var(--text-faint);
+    background:none;border-radius:10px;
+  }
+  .nav a.active{color:var(--accent);background:var(--accent-dim)}
+  .nav a.active::after{display:none}
+  .nav-ico{width:20px;height:20px}
+  .topbar-right{gap:4px;margin:0}
+  .topbar-right .icon-btn{width:34px;height:34px}
+  .hamburger{display:flex;align-items:center;justify-content:center;width:34px;height:34px}
 
   .topbar-right #themeBtn,
   .topbar-right #refreshBtn,
@@ -838,11 +860,14 @@ html{-webkit-tap-highlight-color:transparent}
   .topbar-right .topbar-divider,
   .topbar-right #logoutBtn{display:none}
 
+  /* add bottom padding to content so the fixed bar never covers it */
+  .app{padding-bottom:70px}
+
   /* ---- child records -> proper cards on mobile ---- */
   table.stackable{display:none}
   .child-cards{display:flex;flex-direction:column;gap:12px}
 
-  .main{padding:18px 12px 32px}
+  .main{padding:18px 12px 20px}
   .foot{padding:12px 14px}
   .page-head{gap:12px;align-items:flex-start}
   .page-title{font-size:24px}
