@@ -313,7 +313,7 @@ button{font-family:inherit}
 }
 .topbar-inner{
   max-width:1500px;margin:0 auto;padding:0 22px;height:56px;
-  display:flex;align-items:center;gap:20px;
+  display:flex;align-items:center;gap:20px;position:relative;
 }
 .brand{display:flex;align-items:center;gap:10px}
 .brand-mark{
@@ -323,7 +323,10 @@ button{font-family:inherit}
 }
 .brand-text{font-family:var(--serif);font-size:18px;letter-spacing:.01em}
 
-.nav{display:flex;align-items:center;gap:4px;margin-right:auto}
+.nav{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:flex;align-items:center;gap:4px;
+}
 .nav a{
   display:inline-flex;align-items:center;gap:7px;
   padding:7px 13px;border-radius:8px;font-size:13px;font-weight:500;
@@ -915,7 +918,7 @@ html{-webkit-tap-highlight-color:transparent}
   .topbar-inner{gap:8px;padding:6px 10px;height:auto;min-height:56px}
   .brand{margin-right:0}
   .brand-text{display:none}
-  .nav{display:flex;margin:0 auto;gap:4px}
+  .nav{position:static;transform:none;display:flex;margin:0 auto;gap:4px}
   .nav a{
     display:flex;flex-direction:column;align-items:center;gap:3px;
     padding:5px 14px;font-size:10px;color:var(--text-faint);
