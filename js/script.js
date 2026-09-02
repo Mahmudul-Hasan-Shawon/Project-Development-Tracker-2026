@@ -1204,6 +1204,7 @@ function wireChrome() {
   const sidebar = $('#sidebar');
 
   function openSidebar() {
+    document.body.style.overflow = 'hidden';
     sidebarOverlay.classList.remove('hidden');
     sidebar.classList.remove('hidden');
     requestAnimationFrame(() => {
@@ -1217,6 +1218,7 @@ function wireChrome() {
   }
 
   window.closeSidebarRaw = function closeSidebarRaw() {
+    document.body.style.overflow = '';
     const ov = $('#sidebarOverlay');
     const sb = $('#sidebar');
     if (!sb) return;
