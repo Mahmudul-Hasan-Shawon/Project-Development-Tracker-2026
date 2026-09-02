@@ -817,7 +817,7 @@ html{-webkit-tap-highlight-color:transparent}
   padding:12px;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:8px;
 }
 .sidebar-user{
-  display:flex;align-items:center;gap:10px;padding:12px 12px;
+  display:flex;align-items:center;gap:10px;padding:12px 18px;
   font-size:12px;color:var(--text-faint);border-bottom:1px solid var(--line-soft);
 }
 .sidebar-user .avatar{width:30px;height:30px;flex:none}
