@@ -54,8 +54,14 @@
       </a>
 
       <nav class="nav" id="nav">
-        <a href="#/dashboard" data-route="dashboard">Dashboard</a>
-        <a href="#/projects" data-route="projects">Projects</a>
+        <a href="#/dashboard" data-route="dashboard">
+          <svg class="ico nav-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#/projects" data-route="projects">
+          <svg class="ico nav-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span>Projects</span>
+        </a>
       </nav>
 
       <div class="topbar-right">
@@ -81,8 +87,6 @@
     <div class="sidebar-overlay hidden" id="sidebarOverlay"></div>
     <aside class="sidebar hidden" id="sidebar">
       <div class="sidebar-head">
-        <span class="brand-mark">P/D</span>
-        <span class="sidebar-title">Menu</span>
         <button class="icon-btn sidebar-close" data-act="close-sidebar" aria-label="Close menu">&times;</button>
       </div>
       <div class="sidebar-user" id="sidebarUser"></div>
