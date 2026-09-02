@@ -623,6 +623,7 @@ select.filter:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px
   background:var(--ink-850);
   border:1px solid var(--line);border-radius:var(--radius);padding:18px;
   display:flex;flex-direction:column;gap:13px;cursor:pointer;
+  box-shadow:0 6px 24px -10px rgba(76,5,133,.28);
   transition:all .28s cubic-bezier(.22,1,.36,1);
   animation:riseScale .5s cubic-bezier(.22,1,.36,1) both;
   position:relative;overflow:hidden;
