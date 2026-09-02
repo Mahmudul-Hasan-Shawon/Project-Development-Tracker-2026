@@ -797,8 +797,14 @@ function renderProject() {
     ['Tests', r.tests || 0], ['Days since test', fmtNum(r.daysSinceTest)],
     ['Team', r.teamSize || 0]
   ];
+  const STAT_COLOR = {
+    'Open tasks':'stat-accent','Overdue':'stat-red','Done':'stat-green',
+    'Hours':'stat-teal','Open issues':'stat-accent2','Critical':'stat-red',
+    'Versions':'stat-violet','Last release':'stat-accent','Tests':'stat-green',
+    'Days since test':'stat-yellow','Team':'stat-teal'
+  };
   html += '<div class="stat-strip">' + stats.map(([lab, val]) => `
-    <div class="stat"><div class="stat-val">${esc(val)}</div><div class="stat-lab">${esc(lab)}</div></div>`
+    <div class="stat ${STAT_COLOR[lab]||''}"><div class="stat-val">${esc(val)}</div><div class="stat-lab">${esc(lab)}</div></div>`
   ).join('') + '</div>';
 
   const tabs = [...S.boot.childTables, 'Activity_Log'];
