@@ -973,7 +973,10 @@ html{-webkit-tap-highlight-color:transparent}
     backdrop-filter: blur(10px) saturate(140%);
   }
   #site-footer .shell{padding:18px 14px 0}
-  .foot-bot{margin-top:14px;padding:12px 0}
+  .foot-top{flex-direction:column;align-items:center;gap:14px;text-align:center}
+  .foot-brand{align-items:center}
+  .foot-bot{margin-top:14px;padding:12px 0;text-align:center}
+  .social-row{justify-content:center}
   .social-row a{width:32px;height:32px;font-size:15px}
 }
 
