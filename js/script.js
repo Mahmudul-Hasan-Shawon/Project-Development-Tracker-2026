@@ -324,7 +324,18 @@ function esc(v) {
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
 }
-function setView(html) { $('#view').innerHTML = html; }
+function setView(html) {
+  $('#view').innerHTML = html;
+  const feed = $('#view .feed');
+  if (feed) {
+    let hideTimer = null;
+    feed.addEventListener('scroll', () => {
+      feed.classList.add('scrolling');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => feed.classList.remove('scrolling'), 600);
+    }, { passive: true });
+  }
+}
 function loading() { setView('<div class="loading">loading</div>'); }
 
 /* ------------------------------------------------------------- formatting */
@@ -488,12 +499,12 @@ function renderDashboard() {
   const k = d.kpi;
 
   const kpis = [
-    ['Projects', k.total, ''],
-    ['Active', k.active, 'cool'],
-    ['At risk', k.atRisk, k.atRisk ? 'warm' : ''],
-    ['Open tasks', k.openTasks, ''],
-    ['Overdue', k.overdueTasks, k.overdueTasks ? 'hot' : ''],
-    ['Hours logged', k.hoursLogged, '']
+    ['Projects', k.total, 'kpi-accent'],
+    ['Active', k.active, 'kpi-cool'],
+    ['At risk', k.atRisk, k.atRisk ? 'kpi-warm' : 'kpi-accent'],
+    ['Open tasks', k.openTasks, 'kpi-accent2'],
+    ['Overdue', k.overdueTasks, k.overdueTasks ? 'kpi-hot' : 'kpi-accent'],
+    ['Hours logged', k.hoursLogged, 'kpi-teal']
   ];
 
   let html = `<div class="page-head">
