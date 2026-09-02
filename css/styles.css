@@ -431,7 +431,7 @@ button{font-family:inherit}
 .faint{color:var(--text-faint)}
 
 .page-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:22px;flex-wrap:wrap}
-.page-title{font-family:var(--serif);font-weight:400;font-size:31px;margin:0;line-height:1.1}
+.page-title{font-family:var(--serif);font-weight:700;font-size:31px;margin:0;line-height:1.1}
 .page-sub{margin:4px 0 0;color:var(--text-dim);font-size:13px}
 .spacer{margin-left:auto}
 
