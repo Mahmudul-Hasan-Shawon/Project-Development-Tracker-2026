@@ -307,12 +307,15 @@ button{font-family:inherit}
 .app{position:relative;z-index:2;min-height:100%;display:flex;flex-direction:column}
 
 .topbar{
-  position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:20px;
-  padding:0 20px;height:56px;
+  position:sticky;top:0;z-index:20;
   background:var(--chrome-bg);backdrop-filter:blur(16px) saturate(1.2);
   border-bottom:1px solid var(--line);
 }
-.brand{display:flex;align-items:center;gap:9px;margin-right:6px}
+.topbar-inner{
+  max-width:1500px;margin:0 auto;padding:0 22px;height:56px;
+  display:flex;align-items:center;gap:20px;
+}
+.brand{display:flex;align-items:center;gap:10px}
 .brand-mark{
   font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;
   color:var(--accent);border:1px solid var(--accent-line);border-radius:6px;padding:4px 7px;
@@ -320,10 +323,10 @@ button{font-family:inherit}
 }
 .brand-text{font-family:var(--serif);font-size:18px;letter-spacing:.01em}
 
-.nav{display:flex;gap:2px;margin-right:auto}
+.nav{display:flex;align-items:center;gap:4px;margin-right:auto}
 .nav a{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:6px 12px;border-radius:8px;font-size:13px;font-weight:500;
+  display:inline-flex;align-items:center;gap:7px;
+  padding:7px 13px;border-radius:8px;font-size:13px;font-weight:500;
   color:var(--text-dim);transition:all .2s cubic-bezier(.22,1,.36,1);
   position:relative;
 }
@@ -336,18 +339,18 @@ button{font-family:inherit}
   width:16px;height:2px;background:var(--accent);border-radius:99px;
 }
 
-.topbar-right{display:flex;align-items:center;gap:4px}
+.topbar-right{display:flex;align-items:center;gap:6px}
 .topbar-right .icon-btn{
-  width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;
   border-radius:8px;font-size:20px;color:var(--text-dim);
   padding:0;transition:all .2s cubic-bezier(.22,1,.36,1);
 }
 .topbar-right .icon-btn:hover{color:var(--text);background:var(--ink-750);transform:none}
 .topbar-right .icon-btn:active{transform:scale(.92);transition-duration:.08s}
 .topbar-right .icon-btn .ico{width:16px;height:16px}
-.topbar-divider{width:1px;height:22px;background:var(--line);margin:0 4px}
+.topbar-divider{width:1px;height:22px;background:var(--line);margin:0 2px}
 
-.whoami{display:flex;align-items:center;gap:8px;padding-left:6px}
+.whoami{display:flex;align-items:center;gap:8px;padding-left:8px;margin-left:4px}
 .whoami .name{font-size:12.5px;line-height:1.2}
 .whoami .role{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase}
 
@@ -897,12 +900,12 @@ html{-webkit-tap-highlight-color:transparent}
 @media(max-width:640px){
   .topbar{
     position:fixed;left:0;right:0;bottom:0;top:auto;z-index:40;
-    gap:8px;padding:6px 10px;height:auto;min-height:56px;
     border-bottom:none;border-top:1px solid var(--line);
     transform:translateY(0);
     transition:transform .35s cubic-bezier(.22,1,.36,1);
   }
   .topbar.nav-hide{transform:translateY(110%)}
+  .topbar-inner{gap:8px;padding:6px 10px;height:auto;min-height:56px}
   .brand{margin-right:0}
   .brand-text{display:none}
   .nav{display:flex;margin:0 auto;gap:4px}
@@ -969,7 +972,7 @@ html{-webkit-tap-highlight-color:transparent}
 
 /* ---- very narrow phones ---- */
 @media(max-width:400px){
-  .topbar{gap:8px;padding:0 10px}
+  .topbar-inner{gap:8px;padding:0 8px}
   .brand-mark{display:none}
 }
 
