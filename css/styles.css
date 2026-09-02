@@ -328,16 +328,11 @@ button{font-family:inherit}
   display:inline-flex;align-items:center;gap:7px;
   padding:7px 13px;border-radius:8px;font-size:13px;font-weight:500;
   color:var(--text-dim);transition:all .2s cubic-bezier(.22,1,.36,1);
-  position:relative;
 }
 .nav a .ico{width:15px;height:15px}
 .nav a:hover{background:var(--ink-750);color:var(--text)}
 .nav a:active{transform:none;transition-duration:.08s}
 .nav a.active{background:var(--accent-dim);color:var(--accent)}
-.nav a.active::after{
-  content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
-  width:16px;height:2px;background:var(--accent);border-radius:99px;
-}
 
 .topbar-right{display:flex;align-items:center;gap:6px}
 .topbar-right .icon-btn{
@@ -927,7 +922,6 @@ html{-webkit-tap-highlight-color:transparent}
     background:none;border-radius:10px;
   }
   .nav a.active{color:var(--accent);background:var(--accent-dim)}
-  .nav a.active::after{display:none}
   .nav-ico{width:20px;height:20px}
   .topbar-right{gap:4px;margin:0}
   .topbar-right .icon-btn{width:34px;height:34px}
