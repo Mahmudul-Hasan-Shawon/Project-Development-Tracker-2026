@@ -399,9 +399,16 @@ function personCell(id) {
   if (!p) return `<span class="faint">${esc(id || '—')}</span>`;
   return `<span style="display:flex;align-items:center;gap:7px">${avatar(p)}<span>${esc(p.full_name)}</span></span>`;
 }
+function normalizeUrl(url) {
+  if (!url) return '';
+  let u = url.trim();
+  if (!/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(u)) u = 'https://' + u;
+  return u;
+}
 function link(url) {
   if (!url) return '';
-  return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(url)}</a>`;
+  const u = normalizeUrl(url);
+  return `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(url)}</a>`;
 }
 function dl(label, value, mono = false) {
   return `<div><div class="dt">${esc(label)}</div>
