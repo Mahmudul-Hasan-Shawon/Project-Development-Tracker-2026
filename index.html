@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Internal project and development tracker.">
+  <title>Project &amp; Development Tracker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://script.google.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B0E13'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' font-weight='600' fill='%23F0A868' text-anchor='middle'%3EP/D%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- ============================ boot ============================ -->
+  <div id="boot" class="boot">
+    <div class="boot-mark">P/D</div>
+    <div class="boot-label">connecting</div>
+  </div>
+
+  <!-- ============================ login =========================== -->
+  <div id="login" class="login hidden">
+    <form class="login-card" id="loginForm" autocomplete="on">
+      <div class="login-mark">P/D</div>
+      <h1 class="login-title">Project &amp; Development<br><em>Tracker</em></h1>
+      <p class="login-sub">Sign in to your workspace</p>
+
+      <label class="field">
+        <span class="field-label">Username or email</span>
+        <input type="text" id="loginUser" name="username" autocomplete="username" required>
+      </label>
+      <label class="field">
+        <span class="field-label">Password</span>
+        <input type="password" id="loginPass" name="password" autocomplete="current-password" required>
+      </label>
+
+      <div id="loginError" class="login-error hidden"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="loginBtn">Sign in</button>
+      <p class="login-foot">Sessions last 8 hours.</p>
+    </form>
+  </div>
+
+  <!-- ============================= app ============================ -->
+  <div id="app" class="app hidden">
+    <header class="topbar">
+      <button class="hamburger btn btn-ghost btn-sm" id="hamburgerBtn" aria-label="Menu">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <a class="brand" href="#/dashboard">
+        <span class="brand-mark">P/D</span>
+        <span class="brand-text">Tracker</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#/dashboard" data-route="dashboard">Dashboard</a>
+        <a href="#/projects" data-route="projects">Projects</a>
+      </nav>
+
+      <div class="topbar-right">
+        <button class="btn btn-ghost btn-sm" id="themeBtn" title="Switch theme"></button>
+        <button class="btn btn-ghost btn-sm" id="refreshBtn" title="Reload from the sheet">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+          <span class="lbl">Refresh</span>
+        </button>
+        <button class="btn btn-ghost btn-sm" id="passwordBtn" title="Change your password">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M11 12l8-8"/><path d="M15 8l3 3"/><path d="M18 5l3 3"/></svg>
+          <span class="lbl">Password</span>
+        </button>
+        <div class="whoami" id="whoami"></div>
+        <button class="btn btn-ghost btn-sm" id="logoutBtn" title="Sign out">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          <span class="lbl">Sign out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- mobile sidebar -->
+    <div class="sidebar-overlay hidden" id="sidebarOverlay"></div>
+    <aside class="sidebar hidden" id="sidebar">
+      <div class="sidebar-head">
+        <span class="brand-mark">P/D</span>
+        <span>Menu</span>
+      </div>
+      <div class="sidebar-body">
+        <button class="btn btn-ghost btn-sm sidebar-btn" id="themeBtnMobile" title="Switch theme"></button>
+        <button class="btn btn-ghost btn-sm sidebar-btn" id="passwordBtnMobile" title="Change your password">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M11 12l8-8"/><path d="M15 8l3 3"/><path d="M18 5l3 3"/></svg>
+          <span class="lbl">Password</span>
+        </button>
+        <button class="btn btn-ghost btn-sm sidebar-btn" id="logoutBtnMobile" title="Sign out">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          <span class="lbl">Sign out</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main" id="view"></main>
+
+    <footer class="foot">
+      <span id="footInfo"></span>
+      <span class="faint"> · build <span id="footBuild"></span></span>
+    </footer>
+  </div>
+
+  <!-- =========================== modal ============================ -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-panel">
+      <header class="modal-head">
+        <h2 id="modalTitle">Edit</h2>
+        <button class="icon-btn" data-close="1" aria-label="Close">&times;</button>
+      </header>
+      <div class="modal-body" id="modalBody"></div>
+      <footer class="modal-foot">
+        <span class="modal-msg" id="modalMsg"></span>
+        <div class="modal-actions">
+          <button class="btn btn-ghost" data-close="1">Cancel</button>
+          <button class="btn btn-primary" id="modalSave">Save</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ========================== confirm =========================== -->
+  <div id="confirm" class="modal hidden" role="alertdialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-panel modal-sm">
+      <header class="modal-head"><h2 id="confirmTitle">Are you sure?</h2></header>
+      <div class="modal-body"><p id="confirmBody" class="confirm-text"></p></div>
+      <footer class="modal-foot">
+        <div class="modal-actions">
+          <button class="btn btn-ghost" data-close="1">Cancel</button>
+          <button class="btn btn-danger" id="confirmOk">Delete</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script type="module" src="/js/script.js"></script>
+</body>
+</html>
