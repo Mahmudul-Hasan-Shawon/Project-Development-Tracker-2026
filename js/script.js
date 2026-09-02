@@ -44,8 +44,7 @@ function applyTheme(t) {
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
   const btn = $('#themeBtn');
   if (btn) {
-    btn.innerHTML = (dark ? ICO_SUN : ICO_MOON) +
-      `<span class="lbl">${dark ? 'Light' : 'Dark'}</span>`;
+    btn.innerHTML = dark ? ICO_SUN : ICO_MOON;
     btn.title = dark ? 'Switch to light theme' : 'Switch to dark theme';
   }
   const btnM = $('#themeBtnMobile');
@@ -1095,6 +1094,8 @@ function onBooted(boot) {
     avatar({ full_name: s.name, initials: s.initials, avatar_url: s.avatarUrl }) +
     `<span class="meta"><span class="name">${esc(s.name)}</span><br>
      <span class="role">${esc(s.role)}</span></span>`;
+  const su = $('#sidebarUser');
+  if (su) su.innerHTML = `${esc(s.name)} · ${esc(s.role)}`;
   $('#footInfo').textContent =
     `${boot.app.name} v${boot.app.version} · ${s.username} · ${boot.today}`;
 
@@ -1257,7 +1258,7 @@ function route() {
   const parts = location.hash.replace(/^#\/?/, '').split('/');
   const page = parts[0] || 'dashboard';
 
-  document.querySelectorAll('#nav a').forEach((a) => {
+  document.querySelectorAll('#nav a, .sidebar-nav').forEach((a) => {
     a.classList.toggle('active', a.dataset.route === page);
   });
 
@@ -1437,6 +1438,7 @@ document.addEventListener('click', (ev) => {
   switch (act) {
     case 'open':          location.hash = '#/project/' + id; break;
     case 'tab':           S.activeTab = tab; renderProject(); break;
+    case 'close-sidebar': closeSidebarRaw(); break;
     case 'new-project':   newProject(); break;
     case 'edit-project':  editProject(id); break;
     case 'delete-project': deleteProject(id); break;
