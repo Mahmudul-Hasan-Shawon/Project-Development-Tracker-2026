@@ -492,7 +492,7 @@ td.actions{text-align:right;white-space:nowrap}
 .cell-sub{color:var(--text-faint);font-size:11.5px;margin-top:2px}
 
 /* ---- child-record cards (mobile detail view) ---- */
-.child-cards{display:none;flex-direction:column;gap:12px}
+.child-cards{display:none;flex-direction:column;gap:12px;padding-top:10px}
 .cc{
   background:var(--ink-850);border:1px solid var(--line);border-radius:var(--radius);
   padding:16px;display:flex;flex-direction:column;gap:12px;
