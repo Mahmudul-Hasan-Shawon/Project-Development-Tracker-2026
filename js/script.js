@@ -1169,6 +1169,15 @@ function wireChrome() {
     if (ev.target.dataset && ev.target.dataset.close) {
       ev.target.closest('.modal').classList.add('hidden');
     }
+    const anchor = ev.target.closest('a[href]');
+    if (anchor) {
+      const url = anchor.href;
+      const isExternal = /^https?:\/\//.test(url) || /^www\./.test(url);
+      if (isExternal) {
+        ev.preventDefault();
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    }
   });
 
   document.addEventListener('keydown', (ev) => {
