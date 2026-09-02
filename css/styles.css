@@ -477,13 +477,7 @@ button{font-family:inherit}
   transition:all .25s cubic-bezier(.22,1,.36,1);
   position:relative;overflow:hidden;
 }
-.kpi::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--accent),transparent);
-  opacity:0;transition:opacity .3s ease;
-}
 .kpi:hover{border-color:var(--accent-line);transform:translateY(-2px)}
-.kpi:hover::after{opacity:1}
 .kpi-val{font-family:var(--sans);font-weight:700;font-size:36px;line-height:1;letter-spacing:-.02em;color:var(--text);transition:color .25s ease}
 .kpi-label{
   font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
