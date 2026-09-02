@@ -1095,7 +1095,12 @@ function onBooted(boot) {
     `<span class="meta"><span class="name">${esc(s.name)}</span><br>
      <span class="role">${esc(s.role)}</span></span>`;
   const su = $('#sidebarUser');
-  if (su) su.innerHTML = `${esc(s.name)} · ${esc(s.role)}`;
+  if (su) su.innerHTML =
+    avatar({ full_name: s.name, initials: s.initials, avatar_url: s.avatarUrl }) +
+    `<span style="display:flex;flex-direction:column;line-height:1.25">
+       <span class="name" style="font-weight:600;color:var(--text);font-size:13px">${esc(s.name)}</span>
+       <span class="role" style="font-family:var(--mono);font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em">${esc(s.role)}</span>
+     </span>`;
   $('#footInfo').textContent =
     `${boot.app.name} v${boot.app.version} · ${s.username} · ${boot.today}`;
 
