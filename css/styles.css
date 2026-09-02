@@ -293,8 +293,8 @@ button{font-family:inherit}
   padding:5px 9px;display:inline-block;margin-bottom:22px;
   background:var(--accent-dim);
 }
-.login-title{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.1;margin:0 0 8px}
-.login-title em{color:var(--accent);font-style:italic}
+.login-title{font-family:var(--serif);font-weight:700;font-size:34px;line-height:1.1;margin:0 0 8px}
+.login-title em{color:var(--accent);font-style:normal}
 .login-sub{margin:0 0 26px;color:var(--text-dim);font-size:13px}
 .login-error{
   background:rgba(224,101,94,.11);border:1px solid rgba(224,101,94,.4);
