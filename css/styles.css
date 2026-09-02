@@ -446,6 +446,7 @@ button{font-family:inherit}
 .panel{
   background:var(--ink-850);
   border:1px solid var(--line);border-radius:var(--radius);padding:20px;
+  box-shadow:0 6px 24px -10px rgba(76,5,133,.28);
 }
 
 /* pill / chips */
@@ -471,6 +472,7 @@ button{font-family:inherit}
 .kpi{
   background:var(--ink-850);
   border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;
+  box-shadow:0 6px 24px -10px rgba(76,5,133,.28);
   animation:riseScale .5s cubic-bezier(.22,1,.36,1) both;
   transition:all .25s cubic-bezier(.22,1,.36,1);
   position:relative;overflow:hidden;
@@ -480,7 +482,7 @@ button{font-family:inherit}
   background:linear-gradient(90deg,transparent,var(--accent),transparent);
   opacity:0;transition:opacity .3s ease;
 }
-.kpi:hover{border-color:var(--accent-line);transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+.kpi:hover{border-color:var(--accent-line);transform:translateY(-2px);box-shadow:0 6px 24px -10px rgba(76,5,133,.28),var(--shadow-glow)}
 .kpi:hover::after{opacity:1}
 .kpi-val{font-family:var(--sans);font-weight:700;font-size:36px;line-height:1;letter-spacing:-.02em;color:var(--text);transition:color .25s ease}
 .kpi-label{
