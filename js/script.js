@@ -1079,7 +1079,6 @@ async function start() {
   wireChrome();
 
   document.title = CONFIG.APP_NAME;
-  $('#footBuild').textContent = CONFIG.BUILD;
 
   const token = loadToken();
   if (!token) return showLogin();
@@ -1112,8 +1111,6 @@ function onBooted(boot) {
        <span class="name" style="font-weight:600;color:var(--text);font-size:13px">${esc(s.name)}</span>
        <span class="role" style="font-family:var(--mono);font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.08em">${esc(s.role)}</span>
      </span>`;
-  $('#footInfo').textContent =
-    `${boot.app.name} v${boot.app.version} · ${s.username} · ${boot.today}`;
 
   if (!location.hash) location.hash = '#/dashboard';
   route();

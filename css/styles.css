@@ -352,10 +352,32 @@ button{font-family:inherit}
 .whoami .role{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.08em;text-transform:uppercase}
 
 .main{flex:1;padding:26px 22px 40px;max-width:1500px;width:100%;margin:0 auto}
-.foot{
-  padding:14px 22px;border-top:1px solid var(--line-soft);
-  font-family:var(--mono);font-size:10.5px;color:var(--text-faint);letter-spacing:.06em;
+#site-footer{
+  margin-top:auto;
+  border-top:1px solid var(--line-soft);
+  background:
+    radial-gradient(24rem 13rem at 6% 4%, rgba(201,242,77,.04), transparent 58%),
+    radial-gradient(26rem 14rem at 94% 96%, rgba(255,122,69,.04), transparent 60%);
 }
+#site-footer .shell{max-width:1500px;margin:0 auto;padding:22px 22px 0;width:100%}
+.foot-top{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.foot-brand{display:flex;flex-direction:column;gap:2px}
+.fb-name{font-family:var(--serif);font-size:16px;font-weight:500}
+.fb-tag{font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.06em;text-transform:uppercase}
+.social-row{display:flex;align-items:center;gap:8px}
+.social-row a{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:50%;
+  color:var(--text-dim);background:var(--ink-750);
+  font-size:16px;transition:all .2s cubic-bezier(.22,1,.36,1);
+}
+.social-row a:hover{color:var(--accent);background:var(--accent-dim);transform:translateY(-2px)}
+.social-row a .fa-brands{color:inherit}
+.foot-bot{
+  margin-top:18px;padding:12px 0;border-top:1px solid var(--line-soft);
+  font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.04em;
+}
+.foot-bot span{display:inline-block}
 
 /* ============================ primitives ================================ */
 .btn{
@@ -900,7 +922,6 @@ html{-webkit-tap-highlight-color:transparent}
   .child-cards{display:flex;flex-direction:column;gap:12px}
 
   .main{padding:18px 12px 20px}
-  .foot{padding:12px 14px}
   .page-head{gap:12px;align-items:flex-start}
   .page-title{font-size:24px}
   .page-sub{font-size:12.5px}
@@ -939,6 +960,21 @@ html{-webkit-tap-highlight-color:transparent}
 @media(max-width:400px){
   .topbar{gap:8px;padding:0 10px}
   .brand-mark{display:none}
+}
+
+/* ---- footer: compact on small screens ---- */
+@media(max-width:620px){
+  #site-footer{
+    background:
+      radial-gradient(18rem 12rem at 6% 4%, rgba(201,242,77,.05), transparent 58%),
+      radial-gradient(20rem 13rem at 94% 96%, rgba(255,122,69,.05), transparent 60%),
+      color-mix(in srgb, var(--ink-850) 68%, transparent);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    backdrop-filter: blur(10px) saturate(140%);
+  }
+  #site-footer .shell{padding:18px 14px 0}
+  .foot-bot{margin-top:14px;padding:12px 0}
+  .social-row a{width:32px;height:32px;font-size:15px}
 }
 
 /* ---- theme transition override: disable during page load ---- */
