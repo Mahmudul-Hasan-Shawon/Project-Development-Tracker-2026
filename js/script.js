@@ -524,6 +524,8 @@ function renderDashboard() {
 
   html += '<div class="cols">';
 
+  html += '<div style="display:flex;flex-direction:column;gap:16px;min-width:0">';
+
   /* needs attention */
   html += '<div class="panel"><p class="eyebrow">Needs attention</p>';
   if (!d.attention.length) {
@@ -559,9 +561,7 @@ function renderDashboard() {
   }
   html += '</div>';
 
-  /* breakdown + feed */
-  html += '<div style="display:flex;flex-direction:column;gap:16px">';
-
+  /* by status - left, below needs attention */
   const statuses = Object.keys(d.byStatus).sort();
   const maxS = Math.max(1, ...statuses.map((s) => d.byStatus[s]));
   html += '<div class="panel"><p class="eyebrow">By status</p><div class="bars">' +
@@ -571,6 +571,9 @@ function renderDashboard() {
         <span class="bar-num">${d.byStatus[s]}</span></div>`).join('') +
     '</div></div>';
 
+  html += '</div>';
+
+  /* recent activity - right column */
   html += '<div class="panel"><p class="eyebrow">Recent activity</p><div class="feed">' +
     (d.recent.length ? d.recent.map((a) => `
       <div class="feed-item"><span class="feed-dot"></span><div class="feed-main">
@@ -582,7 +585,7 @@ function renderDashboard() {
       : '<div class="empty" style="border:none"><p>No activity logged yet.</p></div>') +
     '</div></div>';
 
-  html += '</div></div>';
+  html += '</div>';
   setView(html);
 }
 
